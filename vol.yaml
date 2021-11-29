@@ -6,6 +6,8 @@ metadata:
     app: nginx
     version: "1"
 spec:
+  nodeSelector:
+    env: qa
   containers:
   - image: supergiantkir/animals:bear
     name: app1
