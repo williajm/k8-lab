@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: animal
+  labels:
+    app: animal
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: animal
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: animal-set
+spec:
+  selector:
+    matchLabels:
+      app: animal # has to match .spec.template.metadata.labels
+  serviceName: "animal"
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: animal # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: animal
+        image: supergiantkir/animals:hare
+        ports:
+        - containerPort: 80
+          name: web
