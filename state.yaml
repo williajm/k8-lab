@@ -10,7 +10,7 @@ spec:
     name: web
   clusterIP: None
   selector:
-    app: animal
+    statefulset.kubernetes.io/pod-name: animal-set-0
 ---
 apiVersion: apps/v1
 kind: StatefulSet
