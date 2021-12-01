@@ -15,7 +15,7 @@ spec:
     spec: 
       containers: 
         - 
-          image: "nginx:mainline-alpine"
+          image: "nginx:latest"
           name: nginx
           ports: 
             - 
