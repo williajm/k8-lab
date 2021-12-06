@@ -1,0 +1,17 @@
+--- 
+apiVersion: batch/v1
+kind: Job
+metadata: 
+  name: sample
+spec: 
+  backoffLimit: 4
+  template: 
+    spec: 
+      containers: 
+        - 
+          command: 
+            - echo
+            - James
+          image: "alpine:latest"
+          name: sample
+      restartPolicy: Never
